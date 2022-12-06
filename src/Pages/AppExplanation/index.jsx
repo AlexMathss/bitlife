@@ -1,5 +1,7 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text } from "react-native-gesture-handler";
+import { ScrollView, StyleSheet, View, Text } from "react-native";
+import DefaultButton from "../../Components/Common/DefaultButton";
+import ExplationCard from "../../Components/Explanation/ExplanationCard";
 
 export default function AppExplanation(){
     function handleSetShowHome(){
@@ -11,13 +13,14 @@ export default function AppExplanation(){
             <ScrollView>
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.title}>
-                        <p>Antes, deixa {'\n'}eu te explicar...</p>
+                        Antes, deixa {'\n'}eu te explicar...
                     </Text>
+                    <ExplationCard/>
                     <Text style={styles.descriptionCta}>
-                        <p>Pronto(a) para subir de nível na vida?</p>
+                       Pronto(a) para subir de nível na vida?
                     </Text>
                     <Text style={styles.description}>
-                        <p>Na próxima tela você vai poder escolher {'\n'} seus 4 hábitos de forma individual.</p>
+                        Na próxima tela você vai poder escolher {'\n'} seus 4 hábitos de forma individual.
                     </Text>
                     <DefaultButton
                         buttonText="Continuar"
