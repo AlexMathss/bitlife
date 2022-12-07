@@ -1,7 +1,17 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 
 export default function UpdateExcludeButtons({habitInput, handleUpdate, habitArea}){
+
+    const navigation = useNavigation();
+
+    function handleDeleteHabit(){
+        navigation.navigate("Home", {
+            excludeArea: `${habitArea}`
+        });
+    }
+
     return(
         <View style={styles.container}>
             <TouchableOpacity
