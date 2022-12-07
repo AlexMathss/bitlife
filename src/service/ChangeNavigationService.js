@@ -11,7 +11,7 @@ db.transaction((tx) => {
 });
 
 const setShowHome = (obj) => {
-    return new Promisse((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(
                 "INSERT INTO change_navigation (showHome, appStartData) values (?, ?);",
@@ -22,13 +22,31 @@ const setShowHome = (obj) => {
                     }
                 },
                 (_, error) => {
+                    console.log("Reject 2");
                     reject(error);
                 }
+            )
+        })
+    })
+};
+
+const checkShowHome = (id) => {
+    return new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                "SELECT * FROM change_navigation where id=?;",
+                [id],
+                (_, { rows }) => {
+                    if (rows.length > 0) resolve(rows._array[0]);
+                    else reject("Obj not found: id=" + id);
+                  },
+                  (_, error) => reject(error)
             )
         })
     })
 }
 
 export default {
-    setShowHome
-};
+    setShowHome,
+    checkShowHome,
+};//serviço de get
