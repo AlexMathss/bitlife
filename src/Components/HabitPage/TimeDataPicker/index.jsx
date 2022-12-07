@@ -37,7 +37,7 @@ export default function TimeDataPicker({
         const timeNotification = `${notficationHour}:${notficationMin}`;
 
         setNotificationDate(dateNotification);
-        setNotificationDate(timeNotification);
+        setNotificationTime(timeNotification);
 
         if (frequency === "Diário") {
             setDayNotification("Diario");
@@ -110,9 +110,7 @@ export default function TimeDataPicker({
                 <Text style={styles.notificationText}>
                     Horário do hábito: {notificationTime}
                 </Text>
-            </View>
-
-            {show && (
+                {show && (
                 <DateTimePicker 
                     testID="DateTimePicker"
                     value={date}
@@ -120,8 +118,12 @@ export default function TimeDataPicker({
                     is24Hour={true}
                     display="default"
                     onChange={onChange}
+                    style={{backgroundColor: 'white', width: 80}}
                 />
             )}
+            </View>
+
+            
         </View>
     )
 }
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
     notificationText: {
         fontSize: 18,
         color: 'white',
+        marginBottom: 10
     },
     boxStyle: {
         borderWidth: 1,
